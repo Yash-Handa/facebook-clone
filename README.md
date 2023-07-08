@@ -25,6 +25,48 @@ https://github.com/Yash-Handa/facebook-clone/assets/32840183/69f01dc0-075c-4573-
 
 ## Technologies Used ⚒️
 
+#### FrontEnd
+
+  - Front end is built with [React](https://react.dev/) (v18.2.0).
+  - Styles are written in [SCSS](https://sass-lang.com/).
+  - Responsive layouts for Desktop, Tab, and Mobile views.
+  - Offline first PWA app
+  - Across the app Light and Dark themes
+
+#### APIs
+
+  - REST APIs communicate with micro-services through Gateway
+  - Real-time notifications are sent through Web-Sockets ([STOMP protocol](https://stomp.github.io/))
+
+#### Security
+  - [JWT authentication](https://jwt.io/) is required to communicate with the backend.
+  - REST API calls must have a valid JWT token attached to the `Authentication` header (except login and register).
+  - Web-Socket connections must be established with a valid JWT token attached to the `Authentication` request param.
+  - All micro-services can be accessed only through the Gateway.
+
+#### BackEnd
+  - Back end is built with [Spring Boot](https://spring.io/projects/spring-boot) (v3.1.1) and [JDK](https://www.oracle.com/java) (v17).
+  - [Apache Maven](https://maven.apache.org/) for dependency management.
+
+#### Gateway/ Consul
+  - [Consul](https://www.consul.io/) is used for service registry and discovery by the Gateway.
+  - Load-balancing and inter-micro-service communication is also taken care of by the consul.
+  - It also provides a Key/Value store for micro-services.
+
+#### Database
+  - [MongoDB](https://www.mongodb.com/) is used in all micro-services and connected through [MongoTemplate](https://docs.spring.io/spring-data/mongodb/docs/current/api/org/springframework/data/mongodb/core/MongoTemplate.html) (Spring Data MongoDB v4.1.1).
+  - [GridFS](https://www.mongodb.com/docs/manual/core/gridfs/) (MongoDB file system) is used for storing avatar pic, post images, etc.
+  - [ElasticSearch](https://www.elastic.co/) is used alongside MongoDB for providing blazing-fast user and post searches.
+
+#### Catching
+  - [Guava](https://github.com/google/guava) Caching is used for faster users and post fetch.
+  - It is also used for user feed creation.
+
+#### Message Brocker
+  - [Apache Kafka](https://kafka.apache.org/) is used for event-driven communication between micro-services.
+  - Different micro-services publish messages to three topics: `userTopic`, `postTopic`, and `friendTopic`.
+  - All messages are consumed by the `Facebook-NotificationMS` micro-service.
+
 ## Architecture 🏗️
 
 ![Architecture](/.github/assets/FaceBook_Architecture.png?raw=true "Facebook Architecture Diagram")
