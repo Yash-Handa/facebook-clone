@@ -1,4 +1,4 @@
-# facebook-clone
+# Facebook Clone
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
@@ -13,6 +13,15 @@ This is a full-stack Facebook clone built with React and Spring Boot microservic
 https://github.com/Yash-Handa/facebook-clone/assets/32840183/69f01dc0-075c-4573-857c-c9abcd7cbc87
 
 ## Features 😎
+
+- Offline-first PWA responsive web app built with React.
+- **User Registration**: Users can create an account with a unique username and password.
+- **Profiles**: Users can create profiles with avatar photos, cover photos, and personal information.
+- **Post Updates**: Users can post updates - text and photos, on their profiles and view updates from others.
+- **News Feed**: Users can see updates from their friends on their news feed.
+- **Friend Request**: Users can send (withdraw) friend requests to connect with others and accept or decline friend requests from others.
+- **Notifications**: Users can receive Real-time notifications (through WebSockets) for friend requests, messages, and updates from others.
+- **Search**: Users can search for other users and post across Facebook.
 
 ## Technologies Used ⚒️
 
