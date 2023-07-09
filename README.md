@@ -88,6 +88,7 @@ The `Facebook_UserMS` comprises of:
 - One Guava Catch store.
 
 The `Facebook_UserMS` is responsible for all user-related endpoints and data:
+
 - User registration and sign-in with JWT token creation.
 - Edit User profiles, uploading and retrieving avatar pics.
 - Get user info by `userId`, get currently logged-in user info.
@@ -97,7 +98,33 @@ The `Facebook_UserMS` is responsible for all user-related endpoints and data:
 
 #### Facebook_PostMS
 
+The `Facebook_PostMS` comprises of:
+
+- One Spring Boot application (`lb://Facebook-PostMS`).
+- Three MongoDB collections
+  - `post` - for saving all post data.
+  - `fs.files`, `fs.chunks` - for implementing GridFS store to save post pictures.
+- One Guava Catch store.
+
+The `Facebook_PostMS` is responsible for all post-related endpoints and data:
+
+- Creation of posts, get posts of an individual (with pagination).
+- Uploading and retrieving of post images.
+- Creation and maintenance of feeds of a user using Guava catching.
+- Save post-related data to ElasticSearch and retrieve from there as well.
+- Publish messages (Post Creation) to `postTopic` of Kafka.
+
 #### Facebook_FriendMS
+
+The `Facebook_FriendMS` comprises of:
+
+- One Spring Boot application (`lb://Facebook-FriendMS`).
+- One MongoDB collection
+  - `friendRequest` - for saving all friend request information (From, To, Status, CreatedAt).
+
+The `Facebook_FriendMS` is responsible for all friend request-related endpoints and data:
+
+- 
 
 #### Facebook_NotificationMS
 
