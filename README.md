@@ -71,6 +71,36 @@ https://github.com/Yash-Handa/facebook-clone/assets/32840183/69f01dc0-075c-4573-
 
 ![Architecture](/.github/assets/FaceBook_Architecture.png?raw=true "Facebook Architecture Diagram")
 
+The architecture of the application has been mainly divided into 5 micro-services:
+
+#### Facebook_Gateway
+
+The `Facebook_Gateway` is responsible for connecting the rest of the world with the backend application. It also secures public-facing APIs with JWT token verification (except login and register). Any request coming to `Facebook_Gateway` must have an `Authentication` header (for REST APIs) or `Authentication` request param (for WebSocket connection). Here the Authentication token is checked for correctness and expiration. If the token is valid then the `userId` is extracted and put in the header of the incoming request and the request is forwarded to the corresponding micro-service.
+
+#### Facebook_UserMS
+
+The `Facebook_UserMS` comprises of:
+
+- One Spring Boot application (`lb://Facebook-UserMS`).
+- Three MongoDB collections
+  - `user` - for saving all user-related information.
+  - `fs.files`, `fs.chunks` - for implementing GridFS store to save user avatar/ cover.
+- One Guava Catch store.
+
+The `Facebook_UserMS` is responsible for all user-related endpoints and data:
+- User registration and sign-in with JWT token creation.
+- Edit User profiles, uploading and retrieving avatar pics.
+- Get user info by `userId`, get currently logged-in user info.
+- Get the list of friends of a user.
+- Save user data to ElasticSearch and retrieve from there as well.
+- Publish messages to `userTopic` of Kafka.
+
+#### Facebook_PostMS
+
+#### Facebook_FriendMS
+
+#### Facebook_NotificationMS
+
 ## Screen Shorts 📸
 
 | Registeration Page                                    | SignIn Page                                           |
